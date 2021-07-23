@@ -15,9 +15,15 @@ function myFunction() {
 }
 myFunction();
 
+const NUMBER_ZERO = 0;
+const NUMBER_ONE = 1;
+
 //🚀🚀🚀 ⬇️ 📝 Explanation ⬇️ 📝 🚀🚀🚀: 
-
-
+/*
+  The nestedFunction() method can access "internal" variable by using the closure mechanic.
+  First, the method find the variable within its scope. If the variable is not avaiable 
+  the scope, then the method will reach out and try to find the variable outside of its scope.
+*/
 
 
 
@@ -28,11 +34,23 @@ myFunction();
     
 For example, `summation(4)` should return 10 because 1+2+3+4 is 10. Note, you may use a for loop for this function if you wish */
 
-function summation(/*Your Code Here*/) {
-  /*Your Code Here*/
-
-  }
+/**
+ * Use summation to do the following:
+    1. Receive a number 
+    2. Use a counter to return the summation of that number. 
+ * @param {*} input_number 
+ * @returns a number
+ */
+function summation(input_number) {
+  let result = NUMBER_ZERO;
+  for (let i = 0; i < input_number;i++) {
+    result += i + NUMBER_ONE;
+    // console.log(`at ${i}, result = ${result}`);
+  }//end for loop
+  return result;
+}//end summation method
  
+console.log("task 1 - summation(3) return ", summation(3))
 
 // 🦁🦁🦁 Topic 2: ADVANCED Array Methods 🦁🦁🦁
 // Given this zoo data from around the United States, follow the instructions below. Use the specific array methods in the requests below to solve the problems.
@@ -56,9 +74,18 @@ const zooAnimals = [
   displayNames will be an array of strings, and each string should follow this pattern: "name: {name}, scientific: {scientific name}"
   */
 
-  function animalNames(/*Your Code Here*/){
-    /*Your Code Here*/
-  }
+  /**
+   * @param zooAnimals
+   * @return array of string in this format "name: {name}, scientific: {scientific name}"
+   */
+  function animalNames(zooAnimals){
+    let result_array = [];
+    zooAnimals.forEach (
+      element => 
+        result_array.push(`name: ${element["animal_name"]}, scientific: ${element["scientific_name"]}`)
+    );
+    return result_array;
+  }//end animalNames method
   
 
   /* 🦁🦁🦁 Request 2: .map() 🦁🦁🦁
@@ -67,19 +94,39 @@ const zooAnimals = [
   For example: ['jackal, asiatic', .....]
   */
 
-  function lowerCaseNames(/*Your Code Here*/){
-    /*Your Code Here*/
-  }
+  /**
+   * 
+   * @param {*} zooAnimals 
+   * @returns an array of string
+   */
+  function lowerCaseNames(zooAnimals){
+    return zooAnimals.map( 
+      function (element) {
+        return element["animal_name"].toLowerCase();
+      }//end anonymous function
+    ); // end return
+  }//end lowerCaseNames method
   
+  // console.log("task 2 - lowerCaseNames(zooAnimals) return ", lowerCaseNames(zooAnimals));
   
   /* 🦁🦁🦁 Request 3: .filter() 🦁🦁🦁
   The zoo is concerned about animals with a lower population count. 
   Using lowPopulationAnimals use .filter() to create a new array of objects which contains only the animals with a population of less than 5.
   */
 
-  function lowPopulationAnimals(/*Your Code Here*/){
-    /*Your Code Here*/
-  }
+  /**
+   * 
+   * @param {*} zooAnimals 
+   * @returns a new array
+   */
+  function lowPopulationAnimals(zooAnimals){
+    return zooAnimals.filter(
+      function (element) {
+        //create a new array of objects which contains only the animals with a population of less than 5
+        return element.population < 5;
+      }//end anonymouse function
+    ); //end return
+  }//end lowPopulationAnimals method
   
 
   /* 🦁🦁🦁 Request 4: .reduce() 🦁🦁🦁
@@ -88,10 +135,17 @@ const zooAnimals = [
   Remember the reduce method takes two arguments: a callback (which itself takes two args - the accumulator and the item), and an initial value for the count.
   */
 
-  function USApop(/*Your Code Here*/){
-    /*Your Code Here*/
+  function USApop(zooAnimals){
+    let initial_vale = NUMBER_ZERO;
+    return zooAnimals.reduce (
+      function (accumulator, element){
+        return accumulator += element["population"];
+      }
+      ,initial_vale
+    );
   }
   
+  // console.log("task 4 - USApop(zooAnimals) return ",  USApop(zooAnimals));
   
   // 🦁🦁🦁 Callbacks 🦁🦁🦁  
   /* 🦁🦁🦁 Step 1: Create a higher-order function 🦁🦁🦁
@@ -101,30 +155,30 @@ const zooAnimals = [
     * The consume function should return the invocation of cb, passing a and b into cb as arguments
   */
 
-  function consume(/*Your Code Here */){
-    /*Your Code Here */
+  function consume(a, b, callback_function){
+    return callback_function(a,b);
   }
  
   
   /* 🦁🦁🦁 Step 2: Create several functions to callback with consume(); 🦁🦁🦁 */
  // 🦁🦁🦁 Use add to return the sum of two numbers 🦁🦁🦁
   
-function add(/*Your Code Here */){
-    /*Your Code Here*/
+function add(a,b){
+    return a + b;
   }
 
 
 // 🦁🦁🦁 Use multiply to return the product of two numbers 🦁🦁🦁
   
-function multiply(/*Your Code Here */){
-   /*Your Code Here */
+function multiply(a,b){
+   return a*b;
   }
 
 
  // 🦁🦁🦁 Use greeting to accept a first and last name and return "Hello {first-name} {last-name}, nice to meet you!" 🦁🦁🦁
   
-function greeting(/*Your Code Here */){
-   return /*Your Code Here */
+function greeting(first_name, last_name){
+   return `Hello ${first_name} ${last_name}, nice to meet you!`
   }
   
   
