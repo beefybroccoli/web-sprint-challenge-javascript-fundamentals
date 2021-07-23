@@ -17,6 +17,7 @@ myFunction();
 
 const NUMBER_ZERO = 0;
 const NUMBER_ONE = 1;
+const NUMBER_TWO = 2;
 
 //🚀🚀🚀 ⬇️ 📝 Explanation ⬇️ 📝 🚀🚀🚀: 
 /*
@@ -42,12 +43,17 @@ For example, `summation(4)` should return 10 because 1+2+3+4 is 10. Note, you ma
  * @returns a number
  */
 function summation(input_number) {
-  let result = NUMBER_ZERO;
+  
+  //create a array
+  let result_array = [];
+  
+  //push elements into an array, i.e. [1, 2, 3], i.e[1, 2, 3, 4, 5]
   for (let i = 0; i < input_number;i++) {
-    result += i + NUMBER_ONE;
-    // console.log(`at ${i}, result = ${result}`);
+    result_array.push(i+NUMBER_ONE);
   }//end for loop
-  return result;
+
+  //sum array and return the accumulator
+  return result_array.reduce((element, accu) => accu+= element);
 }//end summation method
  
 console.log("task 1 - summation(3) return ", summation(3))
@@ -134,16 +140,20 @@ const zooAnimals = [
   Using USApop find the total population from the zoos array using the .reduce() method. 
   Remember the reduce method takes two arguments: a callback (which itself takes two args - the accumulator and the item), and an initial value for the count.
   */
-
+  /**
+   * 
+   * @param {*} zooAnimals 
+   * @returns 
+   */
   function USApop(zooAnimals){
-    let initial_vale = NUMBER_ZERO;
+    let initial_value = NUMBER_ZERO;
     return zooAnimals.reduce (
       function (accumulator, element){
         return accumulator += element["population"];
-      }
-      ,initial_vale
+      }//end anonymous function
+      ,initial_value
     );
-  }
+  }//end USApop method
   
   // console.log("task 4 - USApop(zooAnimals) return ",  USApop(zooAnimals));
   
@@ -154,32 +164,54 @@ const zooAnimals = [
     * The last parameter accepts a callback
     * The consume function should return the invocation of cb, passing a and b into cb as arguments
   */
-
+  /**
+   * 
+   * @param {*} a 
+   * @param {*} b 
+   * @param {*} callback_function 
+   * @returns 
+   */
   function consume(a, b, callback_function){
     return callback_function(a,b);
-  }
+  }//end consume method
  
   
-  /* 🦁🦁🦁 Step 2: Create several functions to callback with consume(); 🦁🦁🦁 */
- // 🦁🦁🦁 Use add to return the sum of two numbers 🦁🦁🦁
-  
+/* 🦁🦁🦁 Step 2: Create several functions to callback with consume(); 🦁🦁🦁 */
+// 🦁🦁🦁 Use add to return the sum of two numbers 🦁🦁🦁
+/**
+ * 
+ * @param {*} a 
+ * @param {*} b 
+ * @returns 
+ */
 function add(a,b){
     return a + b;
-  }
+  }//end add method
 
 
 // 🦁🦁🦁 Use multiply to return the product of two numbers 🦁🦁🦁
-  
+/**
+ * 
+ * @param {*} a 
+ * @param {*} b 
+ * @returns a number
+ */
 function multiply(a,b){
    return a*b;
-  }
+  }//end multiply method
 
 
  // 🦁🦁🦁 Use greeting to accept a first and last name and return "Hello {first-name} {last-name}, nice to meet you!" 🦁🦁🦁
   
+ /**
+  * 
+  * @param {*} first_name 
+  * @param {*} last_name 
+  * @returns a number
+  */
 function greeting(first_name, last_name){
    return `Hello ${first_name} ${last_name}, nice to meet you!`
-  }
+  }//end greeting method
   
   
   // 🦁🦁🦁 Step 3: Check your work by un-commenting the following calls to consume(): 🦁🦁🦁 
@@ -189,36 +221,56 @@ function greeting(first_name, last_name){
   // console.log(consume("Mary", "Poppins", greeting)); // Hello Mary Poppins, nice to meet you!
 
 // 🐴🐴🐴 Topic 3: Prototypes 🐴🐴🐴 //
-//🐴🐴🐴 Task: You are to build a cuboid maker that can return values for a cuboid's volume or surface area. Cuboids are similar to cubes but do not have even sides. Follow the steps in order to accomplish this challenge. 🐴🐴🐴
+// 🐴🐴🐴 Task: You are to build a cuboid maker that can return values for a cuboid's volume or surface area. Cuboids are similar to cubes but do not have even sides. Follow the steps in order to accomplish this challenge. 🐴🐴🐴
 /* 🐴🐴🐴 Step 1: Base Constructor 🐴🐴🐴
  Use the constructor function named CuboidMaker to accept properties for length, width, and height which can be initialized as an object
 */
-function CuboidMaker(/*Your Code Here */){
-  /*Your Code Here */
-}
+/**
+ * 
+ * @param {*} object 
+ */
+function CuboidMaker(object){
+  this.length = object.length;
+  this.width = object.width;
+  this.height = object.height;
+}//end constructor
 
+// const temp_cuboid = new CuboidMaker({"length":5,"width":10,"height":15});
+// console.log("temp_cuboid return ", temp_cuboid);
+// console.log("temp_cuboid.width return ", temp_cuboid.width);
+// console.log("temp_cuboid.length return ", temp_cuboid.length);
+// console.log("temp_cuboid.height return ", temp_cuboid.height);
 
 /* 🐴🐴🐴 Step 2: Volume Method 🐴🐴🐴
   Create a method called volume using CuboidMaker's prototype that returns the volume of a given cuboid's length, width, and height
   Formula for cuboid volume: length * width * height   */
-
-
-
-
+  /**
+   * 
+   * @returns a number
+   */
+  CuboidMaker.prototype.volume = function() {
+    return this.length * this.width * this.height;
+  }//end volume method
 
 /* 🐴🐴🐴 Step 3: Surface Area Method 🐴🐴🐴
   Create another method called surfaceArea using CuboidMaker's prototype that returns the surface area of a given cuboid's length, width, and height. 
   Formula for cuboid surface area of a cube: 
   2 * (length * width + length * height + width * height)  */
-
-
-
-
+  /**
+   * 
+   * @returns a number
+   */
+  CuboidMaker.prototype.surfaceArea = function() {
+    return NUMBER_TWO * (this.length * this.width + this.length * this.height + this.width * this.height);
+  }//end surfaceArea method
 
 /* 🐴🐴🐴 Step 4: Create a new object that uses CuboidMaker 🐴🐴🐴
   Create an object called cuboid that uses the new keyword to use our CuboidMaker constructor
   Add properties and values of length: 4, width: 5, and height: 5 to cuboid. */
-
+  const cuboid = new CuboidMaker({"length":4, "width":5, "height":5});
+  // cuboid.length = 4;
+  // cuboid.width = 5;
+  // cuboid.height = 5;
 
 
 
@@ -232,7 +284,31 @@ function CuboidMaker(/*Your Code Here */){
 // 🦄🦄🦄 Topic 4: Classes 🦄🦄🦄 //
 //🦄🦄🦄 1. Take your prototypes from above and refactor into class syntax. Please rename your class CuboidMakerTwo and your object cuboidTwo 🦄🦄🦄
 class CuboidMakerTwo{
+  /**
+   * 
+   * @param {*} object 
+   */
+  constructor(object){
+    this.length = object.length;
+    this.width = object.width;
+    this.height = object.height;
+  }//end constructor
 
+  /**
+   * 
+   * @returns a number
+   */
+  volume () {
+    return this.length * this.width * this.height;
+  }//end volume method
+
+  /**
+   * 
+   * @returns a number
+   */
+  surfaceArea() {
+    return NUMBER_TWO * (this.length * this.width + this.length * this.height + this.width * this.height);
+  }//end surfaceArea method
 }
 
 
@@ -241,14 +317,7 @@ class CuboidMakerTwo{
 // console.log(cuboidTwo.surfaceArea()); // 130
 
 
-
-
-
 // 🦄 💪 Stretch Task: Extend the base class CuboidMaker with a sub class called CubeMaker.  Find out the formulas for volume and surface area for cubes and create those methods using the dimension properties from CuboidMaker.  Test your work by logging out your volume and surface area. 🦄 💪
-  
-
-
-
 
 
   /* 🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑 */
