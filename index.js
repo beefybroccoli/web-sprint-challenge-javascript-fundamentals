@@ -101,9 +101,8 @@ const zooAnimals = [
   */
 
   /**
-   * 
    * @param {*} zooAnimals 
-   * @returns an array of string
+   * @returns an array of string - animal's names in lowercase
    */
   function lowerCaseNames(zooAnimals){
     return zooAnimals.map( 
@@ -121,9 +120,8 @@ const zooAnimals = [
   */
 
   /**
-   * 
    * @param {*} zooAnimals 
-   * @returns a new array
+   * @returns a new array, which contains only the animals with a population of less than 5
    */
   function lowPopulationAnimals(zooAnimals){
     return zooAnimals.filter(
@@ -143,7 +141,7 @@ const zooAnimals = [
   /**
    * 
    * @param {*} zooAnimals 
-   * @returns 
+   * @returns accumulator - total population from the zoos array
    */
   function USApop(zooAnimals){
     let initial_value = NUMBER_ZERO;
@@ -165,11 +163,10 @@ const zooAnimals = [
     * The consume function should return the invocation of cb, passing a and b into cb as arguments
   */
   /**
-   * 
    * @param {*} a 
    * @param {*} b 
    * @param {*} callback_function 
-   * @returns 
+   * @returns the invocation of cb, passing a and b into cb as arguments
    */
   function consume(a, b, callback_function){
     return callback_function(a,b);
@@ -179,7 +176,6 @@ const zooAnimals = [
 /* 🦁🦁🦁 Step 2: Create several functions to callback with consume(); 🦁🦁🦁 */
 // 🦁🦁🦁 Use add to return the sum of two numbers 🦁🦁🦁
 /**
- * 
  * @param {*} a 
  * @param {*} b 
  * @returns 
@@ -191,7 +187,6 @@ function add(a,b){
 
 // 🦁🦁🦁 Use multiply to return the product of two numbers 🦁🦁🦁
 /**
- * 
  * @param {*} a 
  * @param {*} b 
  * @returns a number
@@ -204,10 +199,9 @@ function multiply(a,b){
  // 🦁🦁🦁 Use greeting to accept a first and last name and return "Hello {first-name} {last-name}, nice to meet you!" 🦁🦁🦁
   
  /**
-  * 
   * @param {*} first_name 
   * @param {*} last_name 
-  * @returns a number
+  * @returns string - "Hello {first-name} {last-name}, nice to meet you!"
   */
 function greeting(first_name, last_name){
    return `Hello ${first_name} ${last_name}, nice to meet you!`
@@ -226,7 +220,7 @@ function greeting(first_name, last_name){
  Use the constructor function named CuboidMaker to accept properties for length, width, and height which can be initialized as an object
 */
 /**
- * 
+ * Use the constructor function named CuboidMaker to accept properties for length, width, and height which can be initialized as an object
  * @param {*} object 
  */
 function CuboidMaker(object){
@@ -272,9 +266,6 @@ function CuboidMaker(object){
   // cuboid.width = 5;
   // cuboid.height = 5;
 
-
-
-
 // 🐴🐴🐴 Test your volume and surfaceArea methods by uncommenting the logs below: 🐴🐴🐴
 // ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️
 // console.log(cuboid.volume()); // 100
@@ -285,7 +276,6 @@ function CuboidMaker(object){
 //🦄🦄🦄 1. Take your prototypes from above and refactor into class syntax. Please rename your class CuboidMakerTwo and your object cuboidTwo 🦄🦄🦄
 class CuboidMakerTwo{
   /**
-   * 
    * @param {*} object 
    */
   constructor(object){
@@ -295,7 +285,7 @@ class CuboidMakerTwo{
   }//end constructor
 
   /**
-   * 
+   * Formula for cuboid volume: length * width * height
    * @returns a number
    */
   volume () {
@@ -303,7 +293,8 @@ class CuboidMakerTwo{
   }//end volume method
 
   /**
-   * 
+   * Formula for cuboid surface area of a cube: 
+   * (2 * (length * width + length * height + width * height))
    * @returns a number
    */
   surfaceArea() {
